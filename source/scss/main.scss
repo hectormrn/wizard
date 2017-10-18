@@ -1,0 +1,36 @@
+.container-wizard{
+	margin-top: 40px;
+
+	.wizard-steps{
+		//background: gray;
+		color: #fefefe;
+		height: 70px;
+		.nav-link{
+			position: relative;
+			background-color: #8D8D8D;
+			color: #fff;
+			width: 90px; 
+			height: 70px;
+			border-radius: 0px;
+			&::after{
+				content: '';
+				width: 30px;
+				position: absolute;
+				height: inherit;
+				background-color: red;
+			}
+
+			&.active{
+				background-color: #D86B35;
+			}
+		}
+	}
+
+	.wizard-body{
+		height: auto;
+		min-height: 500px;
+		background-color: #EFFEAA;
+		border: solid 1px #D8D5D5;
+	}
+	
+}
