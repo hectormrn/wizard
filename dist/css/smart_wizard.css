@@ -1,3 +1,16 @@
+/*!  
+ * SmartWizard v4.x
+ * jQuery Wizard Plugin
+ * http://www.techlaboratory.net/smartwizard
+ *
+ * Created by Dipu Raj
+ * http://dipuraj.me
+ *
+ * Licensed under the terms of MIT License
+ * https://github.com/techlab/SmartWizard/blob/master/LICENSE
+ */
+
+/* SmartWizard Basic CSS */
 .sw-main {
     position: relative;
     display: block;
@@ -23,7 +36,7 @@
 }
 
 
-/* Theme: White */
+/* SmartWizard Theme: White */
 .sw-theme-default {
     -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
@@ -72,7 +85,7 @@
 
 .sw-theme-default > ul.step-anchor > li > a::after {
     content: "";
-    /*background: #4285F4;*/
+    background: #4285F4;
  /* #5bc0de #4285F4*/
     height: 2px;
     position: absolute;
@@ -135,6 +148,9 @@
     }
 }
 
+/* Loader Animation
+Courtesy: http://bootsnipp.com/snippets/featured/loading-button-effect-no-js
+*/
 @-webkit-keyframes ld {
     0% {
         -webkit-transform: rotate(0deg) scale(1);

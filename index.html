@@ -1,65 +1,471 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Wizard</title>
-	<link rel="stylesheet" href="./build/css/main.css">
-	<link rel="stylesheet" href="./build/css/smart_wizard.css">
-	<link rel="stylesheet" href="./build/css/smart_wizard_theme_arrows.css">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Wizard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link href="./dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
+    <link href="./dist/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div class="container container-wizard">
-		<div class="container">
-
-        <!-- SmartWizard html -->
-        <div id="smartwizard" class="sw-main sw-theme-arrows">
-            <ul class="nav nav-tabs step-anchor">
-                <li class="active"><a href="#step-1">Step 1<br><small>This is tab's description</small></a></li>
-                <li><a href="#step-2" data-content-url="./ajaxtest.php">Step 2<br><small>This is tab's description</small></a></li>
-                <li><a href="#step-3">Step 3<br><small>This is tab's description</small></a></li>
-                <li><a href="#step-4" data-content-url="./ajaxtest.php">Step 4<br><small>This is tab's description</small></a></li>
+    <div class="container-fluid">
+        <br>
+        <div id="smartwizard">
+            <ul>
+                <li><a href="#step-1">Paso 1<br /><small>Cliente</small></a></li>
+                <li><a href="#step-2">Paso 2<br /><small>Datos Personales</small></a></li>
+                <li><a href="#step-3">Paso 3<br /><small>Datso Contacto</small></a></li>
+                <li><a href="#step-4">Paso 4<br /><small>Datos Laborales</small></a></li>
+                <li><a href="#step-5">Paso 5<br /><small>Datos Fiscales</small></a></li>
+                <li><a href="#step-6">Paso 6<br /><small>Datos Prospección</small></a></li>
+                <li><a href="#step-7">Paso 7<br /><small>Bitácora</small></a></li>
             </ul>
-            <nav class="navbar btn-toolbar sw-toolbar sw-toolbar-top"><div class="btn-group navbar-btn sw-btn-group-extra pull-right" role="group"><button class="btn btn-info">Finish</button><button class="btn btn-danger">Cancel</button></div><div class="btn-group navbar-btn sw-btn-group pull-right" role="group"><button class="btn btn-default sw-btn-prev" type="button">Previous</button><button class="btn btn-default sw-btn-next" type="button">Next</button></div></nav>
             
-            <div class="sw-container tab-content" style="height: 163px;">
-                <div id="step-1" class="step-content" style="display: block;">
-                    <h2>Step 1 Content, Non ajax content</h2>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            <div>
+                <div id="step-1" class="">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputEmail1">Nombre:</label>
+                                    <input type="email" class="form-control" placeholder="Nombres(s)">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputPassword1">Primer Apellido:</label>
+                                    <input type="text" class="form-control" placeholder="Primer Apellido">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputPassword1">Segundo Apellido</label>
+                                    <input type="text" class="form-control" placeholder="Segundo Apellido">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">Genero:</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Masculino
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Femenino
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">Estado civil:</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Soltero
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Casado
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Divorciado
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputEmail1">Fecha de Nacimiento:</label>
+                                    <input type="date" class="form-control" placeholder="Fecha Nacimiento">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputPassword1">Correo Electrónico Personal:</label>
+                                    <input type="email" class="form-control" placeholder="Correo Electrónico">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputPassword1">Correo Electrónico Trabajo:</label>
+                                    <input type="email" class="form-control" placeholder="Correo Electrónico">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">Tipo de Persona:</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Fisica
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Moral
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Fideicomiso
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">Regimen:</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Mancomunados
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Separados
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio">Ninguno
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputEmail1">RFC:</label>
+                                    <input type="email" class="form-control" placeholder="RFC">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputPassword1">NSS:</label>
+                                    <input type="text" class="form-control" placeholder="NSS">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="exampleInputPassword1">CURP:</label>
+                                    <input type="text" class="form-control" placeholder="CURP">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="col-md-4">
+                                    <label for="exampleInputEmail1">Tipo de Identificación:</label>
+                                    <select name="" class="form-control">
+                                        <option value="">IFE</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="exampleInputPassword1">Número de Identificación:</label>
+                                    <input type="text" class="form-control" placeholder="Número de Identificación">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div id="step-2" class="step-content">
-                    <h2>Step 2 Content, Non ajax content</h2>
-                    <div>Hello This is a div</div>
-                </div>
-                <div id="step-3" class="step-content">
-                    <h2>Step 3 Content, Non ajax content</h2>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </div>
-                <div id="step-4" class="step-content">
-                    <h2>Step 4 Content, Non ajax content</h2>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">My Details</div>
-                        <table class="table">
-                            <tbody>
-                                <tr> <th>Name:</th> <td>Tim Smith</td> </tr>
-                                <tr> <th>Email:</th> <td>example@example.com</td> </tr>
-                            </tbody>
-                        </table>
+                <div id="step-2" class="">
+                    <form action="">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputEmail1">País:</label>
+                            <input type="text" class="form-control" placeholder="País">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputEmail1">Calle:</label>
+                            <input type="text" class="form-control" placeholder="Calle">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputPassword1">Interior:</label>
+                            <input type="text" class="form-control" placeholder="Interior">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputPassword1">Exterior</label>
+                            <input type="text" class="form-control" placeholder="Exterior">
+                        </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputEmail1">CP:</label>
+                            <input type="text" class="form-control" placeholder="CP">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputEmail1">Colonia:</label>
+                            <select name="colonia" class="form-control">
+                                <option value="">Selecciona</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputPassword1">Municipio / Delegación:</label>
+                            <input type="text" class="form-control" placeholder="Municipio / Delegación">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputPassword1">Ciudad / Población:</label>
+                            <input type="text" class="form-control" placeholder="Ciudad / Población">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputEmail1">Estado:</label>
+                            <input type="text" class="form-control" placeholder="Estado">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputEmail1">Lugar de Nacimiento:</label>
+                            <select name="lugar-nacimiento" class="form-control">
+                                <option value="lugar">Selecciona</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputPassword1">Nacionalidad:</label>
+                            <select name="lugar-nacimiento" class="form-control">
+                                <option value="nacionalidad">Selecciona</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputPassword1">Escolaridad:</label>
+                            <select name="lugar-nacimiento" class="form-control">
+                                <option value="escolaridad">Selecciona</option>
+                            </select>
+                        </div>
+                    </div>
+                    </form>
                 </div>
-            </div><nav class="navbar btn-toolbar sw-toolbar sw-toolbar-bottom"><div class="btn-group navbar-btn sw-btn-group-extra pull-right" role="group"><button class="btn btn-info">Finish</button><button class="btn btn-danger">Cancel</button></div><div class="btn-group navbar-btn sw-btn-group pull-right" role="group"><button class="btn btn-default sw-btn-prev disabled" type="button">Previous</button><button class="btn btn-default sw-btn-next" type="button">Next</button></div></nav>
+                <div id="step-3" class="">
+                    <form action="">
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Tipo de Teléfono:</label>
+                                <select name="tipo-telefono" class="form-control">
+                                    <option value="">Selecciona</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Lada:</label>
+                                <input type="text" class="form-control" placeholder="lada">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Número de Teléfono:</label>
+                                <input type="text" class="form-control" placeholder="Interior">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Extensión:</label>
+                                <input type="text" class="form-control" placeholder="Exterior">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="step-4" class="">
+                    <form action="">
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Razón social:</label>
+                                <input type="text" class="form-control" placeholder="Razón social">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">RFC:</label>
+                                <input type="text" class="form-control" placeholder="RFC">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Puesto:</label>
+                                <input type="text" class="form-control" placeholder="Puesto">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Antigüedad:</label>
+                                <input type="text" class="form-control" placeholder="Antigüedad">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Tipo Economía:</label>
+                                <select name="" class="form-control">
+                                    <option value="">selecciona</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">País:</label>
+                                <input type="text" class="form-control" placeholder="País">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Calle:</label>
+                                <input type="text" class="form-control" placeholder="Calle">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Interior:</label>
+                                <input type="text" class="form-control" placeholder="Interior">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Exterior:</label>
+                                <input type="text" class="form-control" placeholder="Exterior">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">CP:</label>
+                                <input type="text" class="form-control" placeholder="CP">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Colonia:</label>
+                                <select name="" class="form-control">
+                                    <option value="">selecciona</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Municipio / Delegación:</label>
+                                <input type="text" class="form-control" placeholder="Municipio / Delegación">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Ciudad / Población:</label>
+                                <input type="text" class="form-control" placeholder="Ciudad / Población">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Estado:</label>
+                                <input type="text" class="form-control" placeholder="Estado">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="step-5">
+                    <form action="">
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">RFC:</label>
+                                <input type="text" class="form-control" placeholder="RFC">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Razón Social:</label>
+                                <input type="text" class="form-control" placeholder="Razón social">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">País:</label>
+                                <input type="text" class="form-control" placeholder="País">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Calle:</label>
+                                <input type="text" class="form-control" placeholder="Calle">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Interior:</label>
+                                <input type="text" class="form-control" placeholder="Interior">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Exterior:</label>
+                                <input type="text" class="form-control" placeholder="Exterior">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">CP:</label>
+                                <input type="text" class="form-control" placeholder="CP">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Colonia:</label>
+                                <select name="" class="form-control">
+                                    <option value="">selecciona</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Municipio / Delegación:</label>
+                                <input type="text" class="form-control" placeholder="Municipio / Delegación">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Ciudad / Población:</label>
+                                <input type="text" class="form-control" placeholder="Ciudad / Población">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Estado:</label>
+                                <input type="text" class="form-control" placeholder="Estado">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="step-6">
+                    <form action="">
+                        <div class="col-md-12">
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Origen:</label>
+                                <select name="" class="form-control">
+                                    <option value="">selecciona</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Medios de Publicida:</label>
+                                <select name="" class="form-control">
+                                    <option value="">selecciona</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Campaña:</label>
+                                <select name="" class="form-control">
+                                    <option value="">selecciona</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Recomendado:</label>
+                                <button class="form-control btn-primary">ok "aqui va un toggle"</button>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleInputPassword1">Empleado que recomienda:</label>
+                                <select name="" class="form-control">
+                                    <option value="">selecciona</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         
         
     </div>
-	</div>
+    
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Include SmartWizard JavaScript source -->
+    <script type="text/javascript" src="./dist/js/jquery.smartWizard.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            // Step show event 
+            $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
+               //alert("You are on step "+stepNumber+" now");
+               if(stepPosition === 'first'){
+                   $("#prev-btn").addClass('disabled');
+               }else if(stepPosition === 'final'){
+                   $("#next-btn").addClass('disabled');
+               }else{
+                   $("#prev-btn").removeClass('disabled');
+                   $("#next-btn").removeClass('disabled');
+               }
+            });
+            
+            // Toolbar extra buttons
+            var btnFinish = $('<button></button>').text('Terminar')
+                                             .addClass('btn btn-info')
+                                             .on('click', function(){ alert('Finish Clicked'); });
+            var btnCancel = $('<button></button>').text('Cancelar')
+                                             .addClass('btn btn-danger')
+                                             .on('click', function(){ $('#smartwizard').smartWizard("reset"); });                         
+            
+            
+            // Smart Wizard
+            $('#smartwizard').smartWizard({ 
+                    selected: 0, 
+                    theme: 'arrows',
+                    transitionEffect:'fade',
+                    showStepURLhash: true,
+                    toolbarSettings: {toolbarPosition: 'both',
+                                      toolbarExtraButtons: [btnFinish, btnCancel]
+                                    }
+            });
+                                         
+            
+            // External Button Events
+            $("#reset-btn").on("click", function() {
+                // Reset wizard
+                $('#smartwizard').smartWizard("reset");
+                return true;
+            });
+            
+            $("#prev-btn").on("click", function() {
+                // Navigate previous
+                $('#smartwizard').smartWizard("prev");
+                return true;
+            });
+            
+            $("#next-btn").on("click", function() {
+                // Navigate next
+                $('#smartwizard').smartWizard("next");
+                return true;
+            });
+ 
+            //aqui manejos los eventos
+            $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+                return confirm("Do you want to leave the step "+stepNumber+"?");
+            });
+            
+        });   
+    </script>  
 </body>
 </html>
