@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
     <link href="./dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
     <link href="./dist/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
 </head>
@@ -24,44 +25,47 @@
                 <li><a href="#step-7">Paso 7<br /><small>Bitácora</small></a></li>
             </ul>
             
-            <div>
+            <div id="steps-container">
                 <div id="step-1" class="">
-                    <form action="">
+                    <form action="" id="form-step-1">
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputEmail1">Nombre:</label>
-                                    <input type="email" class="form-control" placeholder="Nombres(s)">
+                                    <label for="">Nombre:</label>
+                                    <input type="email" id="nombre" name="nombre" data-type="string" 
+                                        class="form-control" placeholder="Nombres(s)" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputPassword1">Primer Apellido:</label>
-                                    <input type="text" class="form-control" placeholder="Primer Apellido">
+                                    <label for="">Primer Apellido:</label>
+                                    <input type="text" id="apellido_paterno" name="apellido_paterno" data-type="string" 
+                                    class="form-control" placeholder="Primer Apellido" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputPassword1">Segundo Apellido</label>
-                                    <input type="text" class="form-control" placeholder="Segundo Apellido">
+                                    <label for="">Segundo Apellido</label>
+                                    <input type="text" id="apellido_materno" name="apellido_materno" data-type="string"
+                                    class="form-control" placeholder="Segundo Apellido">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group col-md-6">
-                                    <label for="exampleInputPassword1">Genero:</label>
+                                    <label for="">Genero:</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Masculino
+                                        <input type="radio" id="masculino" name="genero" checked>Masculino
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Femenino
+                                        <input type="radio" id="femenino" name="genero">Femenino
                                     </label>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="exampleInputPassword1">Estado civil:</label>
+                                    <label for="">Estado civil:</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Soltero
+                                        <input type="radio" id="soltero" name="estado_civil" checked>Soltero
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Casado
+                                        <input type="radio" id="casado" name="estado_civil">Casado
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Divorciado
+                                        <input type="radio" id="divorciado" name="estado_civil">Divorciado
                                     </label>
                                 </div>
                             </div>
@@ -69,41 +73,44 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputEmail1">Fecha de Nacimiento:</label>
-                                    <input type="date" class="form-control" placeholder="Fecha Nacimiento">
+                                    <label for="">Fecha de Nacimiento:</label>
+                                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" data-type="date"
+                                    class="form-control" placeholder="Fecha Nacimiento">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputPassword1">Correo Electrónico Personal:</label>
-                                    <input type="email" class="form-control" placeholder="Correo Electrónico">
+                                    <label for="">Correo Electrónico Personal:</label>
+                                    <input type="email" id="correo_personal" name="correo_personal" data-type="email"
+                                    class="form-control" placeholder="Correo Electrónico" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputPassword1">Correo Electrónico Trabajo:</label>
-                                    <input type="email" class="form-control" placeholder="Correo Electrónico">
+                                    <label for="">Correo Electrónico Trabajo:</label>
+                                    <input type="email" id="correo_laboral" name="correo_laboral" data-type="email"
+                                    class="form-control" placeholder="Correo Electrónico">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group col-md-6">
-                                    <label for="exampleInputPassword1">Tipo de Persona:</label>
+                                    <label for="">Tipo de Persona:</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Fisica
+                                        <input type="radio" id="fisica" name="tipo_persona" checked>Fisica
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Moral
+                                        <input type="radio" id="moral" name="tipo_persona">Moral
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Fideicomiso
+                                        <input type="radio" id="fideicomiso" name="tipo_persona">Fideicomiso
                                     </label>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="exampleInputPassword1">Regimen:</label>
+                                    <label for="">Regimen:</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Mancomunados
+                                        <input type="radio" id="mancomunados" name="regimen" data-required="false">Mancomunados
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Separados
+                                        <input type="radio" id="separados" name="regimen">Separados
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Ninguno
+                                        <input type="radio" id="ninguno" name="regimen">Ninguno
                                     </label>
                                 </div>
                             </div>
@@ -111,30 +118,34 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputEmail1">RFC:</label>
-                                    <input type="email" class="form-control" placeholder="RFC">
+                                    <label for="">RFC:</label>
+                                    <input type="text" id="rfc" name="rfc" data-type="rfc"
+                                    class="form-control" placeholder="RFC" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputPassword1">NSS:</label>
-                                    <input type="text" class="form-control" placeholder="NSS">
+                                    <label for="">NSS:</label>
+                                    <input type="text" id="nss" name="nss" data-type="nss"
+                                    class="form-control" placeholder="NSS" >
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="exampleInputPassword1">CURP:</label>
-                                    <input type="text" class="form-control" placeholder="CURP">
+                                    <label for="">CURP:</label>
+                                    <input type="text" id="curp" name="curp" data-type="curp"
+                                    class="form-control" placeholder="CURP" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <label for="exampleInputEmail1">Tipo de Identificación:</label>
-                                    <select name="" class="form-control">
+                                    <label for="">Tipo de Identificación:</label>
+                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control" required>
                                         <option value="">IFE</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="exampleInputPassword1">Número de Identificación:</label>
-                                    <input type="text" class="form-control" placeholder="Número de Identificación">
+                                    <label for="">Número de Identificación:</label>
+                                    <input type="text" id="numero_identificacion" data-type="alphanumeric"
+                                    name="numero_identificacion" class="form-control" placeholder="Número de Identificación" required>
                                 </div>
                             </div>
                         </div>
@@ -403,10 +414,14 @@
 
     <!-- Include SmartWizard JavaScript source -->
     <script type="text/javascript" src="./dist/js/jquery.smartWizard.js"></script>
-
+    <script type="text/javascript" src="./dist/js/Validator.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            
+
+        $(document).ready(function(){    
+            if (validator===undefined) {
+                var validator = new Validator();
+            }
+        
             // Step show event 
             $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
                //alert("You are on step "+stepNumber+" now");
@@ -462,7 +477,14 @@
  
             //aqui manejos los eventos
             $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
-                return confirm("Do you want to leave the step "+stepNumber+"?");
+                var isValid = false;
+                switch(true){
+                    case (stepNumber === 0 && stepDirection === 'forward'):
+                        isValid = validator.validateForm(stepNumber);
+                        break;
+                }
+                return isValid;
+                //return confirm("Do you want to leave the step "+stepNumber+"?");
             });
             
         });   
