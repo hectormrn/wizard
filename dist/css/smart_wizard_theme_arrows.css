@@ -130,13 +130,13 @@
 }
 
 .sw-theme-arrows > ul.step-anchor > li.active > a {
-    border-color: #5bc0de !important;
+    border-color: #D86B35 !important;
     color: #fff !important;
-    background: #5bc0de !important;
+    background: #D86B35 !important;
 }
 
 .sw-theme-arrows > ul.step-anchor > li.active > a:after {
-    border-left: 30px solid #5bc0de !important;
+    border-left: 30px solid #D86B35 !important;
 }
 
 .sw-theme-arrows > ul.step-anchor > li.done > a {
