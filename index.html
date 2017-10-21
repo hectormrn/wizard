@@ -10,6 +10,7 @@
 
     <link href="./dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
     <link href="./dist/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./build/css/main.css" type="text/css">
 </head>
 <body>
     <div class="container-fluid">
@@ -18,7 +19,7 @@
             <ul>
                 <li><a href="#step-1">Paso 1<br /><small>Cliente</small></a></li>
                 <li><a href="#step-2">Paso 2<br /><small>Datos Personales</small></a></li>
-                <li><a href="#step-3">Paso 3<br /><small>Datso Contacto</small></a></li>
+                <li><a href="#step-3">Paso 3<br /><small>Datos Contacto</small></a></li>
                 <li><a href="#step-4">Paso 4<br /><small>Datos Laborales</small></a></li>
                 <li><a href="#step-5">Paso 5<br /><small>Datos Fiscales</small></a></li>
                 <li><a href="#step-6">Paso 6<br /><small>Datos Prospección</small></a></li>
@@ -26,23 +27,26 @@
             </ul>
             
             <div id="steps-container">
+                <!--<div class="alert alert-danger" id="container-error">
+                    <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                </div>-->
                 <div id="step-1" class="">
                     <form action="" id="form-step-1">
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
                                     <label for="">Nombre:</label>
-                                    <input type="email" id="nombre" name="nombre" data-type="string" 
+                                    <input type="email" id="nombre" name="nombre" data-eval="alphabetic" 
                                         class="form-control" placeholder="Nombres(s)" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Primer Apellido:</label>
-                                    <input type="text" id="apellido_paterno" name="apellido_paterno" data-type="string" 
+                                    <input type="text" id="apellido_paterno" name="apellido_paterno" data-eval="alphabetic" 
                                     class="form-control" placeholder="Primer Apellido" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Segundo Apellido</label>
-                                    <input type="text" id="apellido_materno" name="apellido_materno" data-type="string"
+                                    <input type="text" id="apellido_materno" name="apellido_materno" data-eval="alphabetic" data-required="false"
                                     class="form-control" placeholder="Segundo Apellido">
                                 </div>
                             </div>
@@ -58,15 +62,11 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="">Estado civil:</label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="soltero" name="estado_civil" checked>Soltero
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="casado" name="estado_civil">Casado
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="divorciado" name="estado_civil">Divorciado
-                                    </label>
+                                    <!-- Llenar desde DB -->
+                                    <select name="estado_civil" class="form-control" id="estado_civil" data-eval="alphabetic">
+                                        <option value="">Selecciona</option>
+                                        <option value="soltero">Soltero</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -74,44 +74,35 @@
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
                                     <label for="">Fecha de Nacimiento:</label>
-                                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" data-type="date"
+                                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" data-eval="date"
                                     class="form-control" placeholder="Fecha Nacimiento">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Correo Electrónico Personal:</label>
-                                    <input type="email" id="correo_personal" name="correo_personal" data-type="email"
+                                    <input type="email" id="correo_personal" name="correo_personal" data-eval="email"
                                     class="form-control" placeholder="Correo Electrónico" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Correo Electrónico Trabajo:</label>
-                                    <input type="email" id="correo_laboral" name="correo_laboral" data-type="email"
+                                    <input type="email" id="correo_laboral" name="correo_laboral" data-eval="email"
                                     class="form-control" placeholder="Correo Electrónico">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group col-md-6">
                                     <label for="">Tipo de Persona:</label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="fisica" name="tipo_persona" checked>Fisica
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="moral" name="tipo_persona">Moral
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="fideicomiso" name="tipo_persona">Fideicomiso
-                                    </label>
+                                    <select name="tipo_persona" id="tipo_persona" class="form-control" data-eval="string">
+                                        <option value="fisica">Fisica</option>
+                                        <option value="moral">Moral</option>
+                                        <option value="fideicomiso">Fideicomiso</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="">Regimen:</label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="mancomunados" name="regimen" data-required="false">Mancomunados
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="separados" name="regimen">Separados
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" id="ninguno" name="regimen">Ninguno
-                                    </label>
+                                    <!-- debe llenarse desde DB -->
+                                    <select name="regimen_conyugal" id="regimen_conyugal" class="form-control" data-eval="string">
+                                        <option value="selecciona">Selecciona</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -119,17 +110,17 @@
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
                                     <label for="">RFC:</label>
-                                    <input type="text" id="rfc" name="rfc" data-type="rfc"
+                                    <input type="text" id="rfc" name="rfc" data-eval="rfc"
                                     class="form-control" placeholder="RFC" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">NSS:</label>
-                                    <input type="text" id="nss" name="nss" data-type="nss"
+                                    <input type="text" id="nss" name="nss" data-eval="numeric"
                                     class="form-control" placeholder="NSS" >
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">CURP:</label>
-                                    <input type="text" id="curp" name="curp" data-type="curp"
+                                    <input type="text" id="curp" name="curp" data-eval="curp"
                                     class="form-control" placeholder="CURP" required>
                                 </div>
                             </div>
@@ -138,13 +129,13 @@
                             <div class="col-md-9">
                                 <div class="col-md-4">
                                     <label for="">Tipo de Identificación:</label>
-                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control" required>
+                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control" data-eval="not-empty" required>
                                         <option value="">IFE</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Número de Identificación:</label>
-                                    <input type="text" id="numero_identificacion" data-type="alphanumeric"
+                                    <input type="text" id="numero_identificacion" data-eval="alphanumeric"
                                     name="numero_identificacion" class="form-control" placeholder="Número de Identificación" required>
                                 </div>
                             </div>
@@ -155,62 +146,62 @@
                     <form action="">
                     <div class="col-md-12">
                         <div class="form-group col-md-3">
-                            <label for="exampleInputEmail1">País:</label>
-                            <input type="text" class="form-control" placeholder="País">
+                            <label for="">País:</label>
+                            <input type="text" id="pais" class="form-control" placeholder="País">
+                        </div>
+                        <div class="form-group col-sd-3">
+                            <label for="">Calle:</label>
+                            <input type="text" id="calle" class="form-control" placeholder="Calle">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="exampleInputEmail1">Calle:</label>
-                            <input type="text" class="form-control" placeholder="Calle">
+                            <label for="">Interior:</label>
+                            <input type="text" id="interior" class="form-control" placeholder="Interior">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="exampleInputPassword1">Interior:</label>
-                            <input type="text" class="form-control" placeholder="Interior">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="exampleInputPassword1">Exterior</label>
-                            <input type="text" class="form-control" placeholder="Exterior">
+                            <label for="">Exterior</label>
+                            <input type="text" id="exterior" class="form-control" placeholder="Exterior">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group col-md-3">
-                            <label for="exampleInputEmail1">CP:</label>
-                            <input type="text" class="form-control" placeholder="CP">
+                            <label for="">CP:</label>
+                            <input type="text" id="cp" class="form-control" placeholder="CP">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="exampleInputEmail1">Colonia:</label>
-                            <select name="colonia" class="form-control">
+                            <label for="">Colonia:</label>
+                            <select name="colonia" id="colonia" class="form-control">
                                 <option value="">Selecciona</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="exampleInputPassword1">Municipio / Delegación:</label>
-                            <input type="text" class="form-control" placeholder="Municipio / Delegación">
+                            <label for="">Municipio / Delegación:</label>
+                            <input type="text" id="municipio_delegacion" class="form-control" placeholder="Municipio / Delegación">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="exampleInputPassword1">Ciudad / Población:</label>
-                            <input type="text" class="form-control" placeholder="Ciudad / Población">
+                            <label for="">Ciudad / Población:</label>
+                            <input type="text" id="ciudad_poblacion" class="form-control" placeholder="Ciudad / Población">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group col-md-3">
-                            <label for="exampleInputEmail1">Estado:</label>
-                            <input type="text" class="form-control" placeholder="Estado">
+                            <label for="">Estado:</label>
+                            <input type="text" id="estado" class="form-control" placeholder="Estado">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="exampleInputEmail1">Lugar de Nacimiento:</label>
-                            <select name="lugar-nacimiento" class="form-control">
+                            <label for="">Lugar de Nacimiento:</label>
+                            <select name="lugar-nacimiento" id="lugar_nacimiento" class="form-control">
                                 <option value="lugar">Selecciona</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="exampleInputPassword1">Nacionalidad:</label>
-                            <select name="lugar-nacimiento" class="form-control">
+                            <label for="">Nacionalidad:</label>
+                            <select name="nacionalidad" id="nacionalidad" class="form-control">
                                 <option value="nacionalidad">Selecciona</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="exampleInputPassword1">Escolaridad:</label>
-                            <select name="lugar-nacimiento" class="form-control">
+                            <label for="">Escolaridad:</label>
+                            <select name="escolaridad" id="escolaridad" class="form-control">
                                 <option value="escolaridad">Selecciona</option>
                             </select>
                         </div>
@@ -221,22 +212,22 @@
                     <form action="">
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Tipo de Teléfono:</label>
-                                <select name="tipo-telefono" class="form-control">
+                                <label for="">Tipo de Teléfono:</label>
+                                <select name="tipo-telefono" id="tipo_telefono" class="form-control">
                                     <option value="">Selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Lada:</label>
-                                <input type="text" class="form-control" placeholder="lada">
+                                <label for="">Lada:</label>
+                                <input type="text" id="lada" class="form-control" placeholder="lada">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Número de Teléfono:</label>
-                                <input type="text" class="form-control" placeholder="Interior">
+                                <label for="">Número de Teléfono:</label>
+                                <input type="text" id="numero_telefono" class="form-control" placeholder="Interior">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Extensión:</label>
-                                <input type="text" class="form-control" placeholder="Exterior">
+                                <label for="">Extensión:</label>
+                                <input type="text" id="extension" class="form-control" placeholder="Exterior">
                             </div>
                         </div>
                     </form>
@@ -245,70 +236,70 @@
                     <form action="">
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Razón social:</label>
-                                <input type="text" class="form-control" placeholder="Razón social">
+                                <label for="">Razón social:</label>
+                                <input type="text" id="razon_social" class="form-control" placeholder="Razón social">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">RFC:</label>
-                                <input type="text" class="form-control" placeholder="RFC">
+                                <label for="">RFC:</label>
+                                <input type="text" id="rfc" class="form-control" placeholder="RFC">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Puesto:</label>
-                                <input type="text" class="form-control" placeholder="Puesto">
+                                <label for="">Puesto:</label>
+                                <input type="text" id="puesto" class="form-control" placeholder="Puesto">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Antigüedad:</label>
-                                <input type="text" class="form-control" placeholder="Antigüedad">
+                                <label for="">Antigüedad:</label>
+                                <input type="text" id="antiguedad" class="form-control" placeholder="Antigüedad">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Tipo Economía:</label>
-                                <select name="" class="form-control">
+                                <label for="">Tipo Economía:</label>
+                                <select name="" id="tipo_economia" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">País:</label>
-                                <input type="text" class="form-control" placeholder="País">
+                                <label for="">País:</label>
+                                <input type="text" id="pais" class="form-control" placeholder="País">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Calle:</label>
-                                <input type="text" class="form-control" placeholder="Calle">
+                                <label for="">Calle:</label>
+                                <input type="text" id="calle" class="form-control" placeholder="Calle">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Interior:</label>
-                                <input type="text" class="form-control" placeholder="Interior">
+                                <label for="">Interior:</label>
+                                <input type="text" id="interior" class="form-control" placeholder="Interior">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Exterior:</label>
-                                <input type="text" class="form-control" placeholder="Exterior">
+                                <label for="">Exterior:</label>
+                                <input type="text" id="exterior" class="form-control" placeholder="Exterior">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">CP:</label>
-                                <input type="text" class="form-control" placeholder="CP">
+                                <label for="">CP:</label>
+                                <input type="text" id="cp" class="form-control" placeholder="CP">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Colonia:</label>
-                                <select name="" class="form-control">
+                                <label for="">Colonia:</label>
+                                <select name="" id="colonia" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Municipio / Delegación:</label>
-                                <input type="text" class="form-control" placeholder="Municipio / Delegación">
+                                <label for="">Municipio / Delegación:</label>
+                                <input type="text" id="municipio_delegacion" class="form-control" placeholder="Municipio / Delegación">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Ciudad / Población:</label>
-                                <input type="text" class="form-control" placeholder="Ciudad / Población">
+                                <label for="">Ciudad / Población:</label>
+                                <input type="text" id="ciudad_poblacion" class="form-control" placeholder="Ciudad / Población">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Estado:</label>
-                                <input type="text" class="form-control" placeholder="Estado">
+                                <label for="">Estado:</label>
+                                <input type="text" id="estado" class="form-control" placeholder="Estado">
                             </div>
                         </div>
                     </form>
@@ -317,54 +308,54 @@
                     <form action="">
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">RFC:</label>
-                                <input type="text" class="form-control" placeholder="RFC">
+                                <label for="">RFC:</label>
+                                <input type="text" id="rfc" class="form-control" placeholder="RFC">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Razón Social:</label>
-                                <input type="text" class="form-control" placeholder="Razón social">
+                                <label for="">Razón Social:</label>
+                                <input type="text" id="razon_social" class="form-control" placeholder="Razón social">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">País:</label>
-                                <input type="text" class="form-control" placeholder="País">
+                                <label for="">País:</label>
+                                <input type="text" id="pais" class="form-control" placeholder="País">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Calle:</label>
-                                <input type="text" class="form-control" placeholder="Calle">
+                                <label for="">Calle:</label>
+                                <input type="text" id="calle" class="form-control" placeholder="Calle">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Interior:</label>
-                                <input type="text" class="form-control" placeholder="Interior">
+                                <label for="">Interior:</label>
+                                <input type="text" id="interior" class="form-control" placeholder="Interior">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Exterior:</label>
-                                <input type="text" class="form-control" placeholder="Exterior">
+                                <label for="">Exterior:</label>
+                                <input type="text" id="exterior" class="form-control" placeholder="Exterior">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">CP:</label>
-                                <input type="text" class="form-control" placeholder="CP">
+                                <label for="">CP:</label>
+                                <input type="text" id="cp" class="form-control" placeholder="CP">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Colonia:</label>
-                                <select name="" class="form-control">
+                                <label for="">Colonia:</label>
+                                <select name="" id="colonia" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Municipio / Delegación:</label>
-                                <input type="text" class="form-control" placeholder="Municipio / Delegación">
+                                <label for="">Municipio / Delegación:</label>
+                                <input type="text" id="municipio_delegacion" class="form-control" placeholder="Municipio / Delegación">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Ciudad / Población:</label>
-                                <input type="text" class="form-control" placeholder="Ciudad / Población">
+                                <label for="">Ciudad / Población:</label>
+                                <input type="text" id="ciudad_poblacion" class="form-control" placeholder="Ciudad / Población">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Estado:</label>
-                                <input type="text" class="form-control" placeholder="Estado">
+                                <label for="">Estado:</label>
+                                <input type="text" id="estado" class="form-control" placeholder="Estado">
                             </div>
                         </div>
                     </form>
@@ -373,30 +364,30 @@
                     <form action="">
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Origen:</label>
-                                <select name="" class="form-control">
+                                <label for="">Origen:</label>
+                                <select name="" id="origen" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Medios de Publicida:</label>
-                                <select name="" class="form-control">
+                                <label for="">Medios de Publicida:</label>
+                                <select name="" id="medios_publicidad" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Campaña:</label>
-                                <select name="" class="form-control">
+                                <label for="">Campaña:</label>
+                                <select name="" id="campana" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Recomendado:</label>
-                                <button class="form-control btn-primary">ok "aqui va un toggle"</button>
+                                <label for="">Recomendado:</label>
+                                <button id="recomendado" class="form-control btn-primary">ok "aqui va un toggle"</button>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="exampleInputPassword1">Empleado que recomienda:</label>
-                                <select name="" class="form-control">
+                                <label for="">Empleado que recomienda:</label>
+                                <select name="" id="empleado_recomienda" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
@@ -416,12 +407,12 @@
     <script type="text/javascript" src="./dist/js/jquery.smartWizard.js"></script>
     <script type="text/javascript" src="./dist/js/Validator.js"></script>
     <script type="text/javascript">
-
+        
         $(document).ready(function(){    
             if (validator===undefined) {
                 var validator = new Validator();
             }
-        
+            
             // Step show event 
             $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
                //alert("You are on step "+stepNumber+" now");
@@ -486,7 +477,7 @@
                 return isValid;
                 //return confirm("Do you want to leave the step "+stepNumber+"?");
             });
-            
+
         });   
     </script>  
 </body>
