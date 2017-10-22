@@ -36,13 +36,13 @@
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
                                     <label for="">Nombre:</label>
-                                    <input type="email" id="nombre" name="nombre" data-eval="alphabetic" 
+                                    <input type="email" id="nombre" name="nombre" data-eval="alphabetic"  data-required="true"
                                         class="form-control" placeholder="Nombres(s)" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Primer Apellido:</label>
                                     <input type="text" id="apellido_paterno" name="apellido_paterno" data-eval="alphabetic" 
-                                    class="form-control" placeholder="Primer Apellido" required>
+                                    data-required="true" class="form-control" placeholder="Primer Apellido" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Segundo Apellido</label>
@@ -63,7 +63,8 @@
                                 <div class="form-group col-md-6">
                                     <label for="">Estado civil:</label>
                                     <!-- Llenar desde DB -->
-                                    <select name="estado_civil" class="form-control" id="estado_civil" data-eval="alphabetic">
+                                    <select name="estado_civil" class="form-control" id="estado_civil" data-required="true" 
+                                    data-eval="alphabetic">
                                         <option value="">Selecciona</option>
                                         <option value="soltero">Soltero</option>
                                     </select>
@@ -74,13 +75,13 @@
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
                                     <label for="">Fecha de Nacimiento:</label>
-                                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" data-eval="date"
-                                    class="form-control" placeholder="Fecha Nacimiento">
+                                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" data-eval="date" 
+                                    data-required="true" class="form-control" placeholder="Fecha Nacimiento">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Correo Electrónico Personal:</label>
-                                    <input type="email" id="correo_personal" name="correo_personal" data-eval="email"
-                                    class="form-control" placeholder="Correo Electrónico" required>
+                                    <input type="email" id="correo_personal" name="correo_personal" data-eval="email" 
+                                    data-required="true" class="form-control" placeholder="Correo Electrónico" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Correo Electrónico Trabajo:</label>
@@ -91,7 +92,9 @@
                             <div class="col-md-3">
                                 <div class="form-group col-md-6">
                                     <label for="">Tipo de Persona:</label>
-                                    <select name="tipo_persona" id="tipo_persona" class="form-control" data-eval="string">
+                                    <select name="tipo_persona" id="tipo_persona" class="form-control" 
+                                     data-eval="not-empty" data-required="true">
+                                        <option value="">Selecciona</option>
                                         <option value="fisica">Fisica</option>
                                         <option value="moral">Moral</option>
                                         <option value="fideicomiso">Fideicomiso</option>
@@ -100,7 +103,8 @@
                                 <div class="form-group col-md-6">
                                     <label for="">Regimen:</label>
                                     <!-- debe llenarse desde DB -->
-                                    <select name="regimen_conyugal" id="regimen_conyugal" class="form-control" data-eval="string" data-required="false">
+                                    <select name="regimen_conyugal" id="regimen_conyugal" class="form-control" data-eval="string" 
+                                    data-required="false">
                                         <option value="selecciona">Selecciona</option>
                                     </select>
                                 </div>
@@ -110,7 +114,7 @@
                             <div class="col-md-9">
                                 <div class="form-group col-md-4">
                                     <label for="">RFC:</label>
-                                    <input type="text" id="rfc" name="rfc" data-eval="rfc"
+                                    <input type="text" id="rfc" name="rfc" data-eval="rfc" data-required="true"
                                     class="form-control" placeholder="RFC" required>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -120,7 +124,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">CURP:</label>
-                                    <input type="text" id="curp" name="curp" data-eval="curp"
+                                    <input type="text" id="curp" name="curp" data-eval="curp" data-required="true"
                                     class="form-control" placeholder="CURP" required>
                                 </div>
                             </div>
@@ -129,13 +133,14 @@
                             <div class="col-md-9">
                                 <div class="col-md-4">
                                     <label for="">Tipo de Identificación:</label>
-                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control" data-eval="not-empty" required>
+                                    <select name="tipo_identificacion" id="tipo_identificacion" 
+                                    class="form-control" data-eval="not-empty" data-required="true" required>
                                         <option value="">IFE</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Número de Identificación:</label>
-                                    <input type="text" id="numero_identificacion" data-eval="alphanumeric"
+                                    <input type="text" id="numero_identificacion" data-eval="alphanumeric" data-required="true"
                                     name="numero_identificacion" class="form-control" placeholder="Número de Identificación" required>
                                 </div>
                             </div>
@@ -147,11 +152,11 @@
                     <div class="col-md-12">
                         <div class="form-group col-md-3">
                             <label for="">País:</label>
-                            <input type="text" id="pais" data-eval="not-empty" class="form-control" placeholder="País">
+                            <input type="text" id="pais" data-eval="not-empty" data-required="true" class="form-control" placeholder="País">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Calle:</label>
-                            <input type="text" id="calle" data-eval="alphanumeric" class="form-control" placeholder="Calle">
+                            <input type="text" id="calle" data-eval="alphanumeric" data-required="true" class="form-control" placeholder="Calle">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Interior:</label>
@@ -159,40 +164,47 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Exterior</label>
-                            <input type="text" id="exterior" data-eval="alphanumeric" class="form-control" placeholder="Exterior">
+                            <input type="text" id="exterior" data-eval="alphanumeric" data-required="false" class="form-control" placeholder="Exterior">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group col-md-3">
                             <label for="">CP:</label>
-                            <input type="text" id="cp" class="form-control" data-eval="alphanumeric" placeholder="CP">
+                            <input type="text" id="cp" class="form-control" data-eval="alphanumeric" data-required="true" 
+                            placeholder="CP">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Colonia:</label>
                             <!-- llenar desde DB -->
-                            <select name="colonia" id="colonia" data-eval="not-empty" class="form-control">
+                            <select name="colonia" id="colonia" data-eval="not-empty" data-required="true" 
+                            class="form-control">
                                 <option value="">Selecciona</option>
                                 <option value="algo">Algo</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Municipio / Delegación:</label>
-                            <input type="text" id="municipio_delegacion" data-eval="not-empty" class="form-control" placeholder="Municipio / Delegación">
+                            <input type="text" id="municipio_delegacion" data-eval="not-empty" data-required="true" 
+                            class="form-control" placeholder="Municipio / Delegación">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Ciudad / Población:</label>
-                            <input type="text" id="ciudad_poblacion" data-eval="not-empty" class="form-control" placeholder="Ciudad / Población">
+                            <input type="text" id="ciudad_poblacion" data-eval="not-empty" data-required="true" 
+                            class="form-control" placeholder="Ciudad / Población">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group col-md-3">
                             <label for="">Estado:</label>
-                            <input type="text" id="estado" data-eval="not-empty" class="form-control" placeholder="Estado">
+                            <input type="text" id="estado" data-eval="not-empty" data-required="true" 
+                            class="form-control" placeholder="Estado">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Lugar de Nacimiento:</label>
-                            <select name="lugar-nacimiento" id="lugar_nacimiento" data-eval="not-empty" class="form-control">
-                                <option value="lugar">Selecciona</option>
+                            <select name="lugar-nacimiento" id="lugar_nacimiento" data-eval="not-empty" data-required="true" 
+                            class="form-control">
+                                <option value="">Selecciona</option>
+                                <option value="lugar">alguno</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
@@ -203,7 +215,8 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Escolaridad:</label>
-                            <select name="escolaridad" id="escolaridad" data-eval="not-empty" class="form-control">
+                            <select name="escolaridad" id="escolaridad" data-eval="not-empty" data-required="false" 
+                            class="form-control">
                                 <option value="escolaridad">Selecciona</option>
                             </select>
                         </div>
@@ -215,7 +228,8 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Tipo de Teléfono:</label>
-                                <select name="tipo-telefono" id="tipo_telefono" data-eval="not-empty" class="form-control">
+                                <select name="tipo-telefono" id="tipo_telefono" data-eval="not-empty" data-required="true" 
+                                class="form-control">
                                     <option value="">Selecciona</option>
                                     <option value="tipotelefono">tipo</option>
                                 </select>
@@ -245,7 +259,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">RFC:</label>
-                                <input type="text" id="rfc" data-eval="rfc" class="form-control" placeholder="RFC">
+                                <input type="text" id="rfc" data-eval="rfc" data-required="true" class="form-control" placeholder="RFC">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Puesto:</label>
@@ -265,11 +279,12 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">País:</label>
-                                <input type="text" id="pais" data-eval="not-empty" class="form-control" placeholder="País">
+                                <input type="text" id="pais" data-eval="not-empty" data-required="false" 
+                                class="form-control" placeholder="País">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Calle:</label>
-                                <input type="text" id="calle" data-eval="alphanumeric" class="form-control" placeholder="Calle">
+                                <input type="text" id="calle" data-eval="alphanumeric" data-required="false" class="form-control" placeholder="Calle">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Interior:</label>
@@ -280,33 +295,33 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Exterior:</label>
-                                <input type="text" id="exterior" data-eval="alphanumeric" 
+                                <input type="text" id="exterior" data-eval="alphanumeric" data-required="false"
                                 class="form-control" placeholder="Exterior">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">CP:</label>
-                                <input type="text" id="cp" data-eval="alphanumeric" class="form-control" placeholder="CP">
+                                <input type="text" id="cp" data-eval="alphanumeric" data-required="false" class="form-control" placeholder="CP">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Colonia:</label>
-                                <select name="" id="colonia" data-eval="not-empty" class="form-control">
+                                <select name="" id="colonia" data-eval="not-empty" data-required="false" class="form-control">
                                     <option value="">selecciona</option>
                                     <option value="algo">colonia</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Municipio / Delegación:</label>
-                                <input type="text" id="municipio_delegacion" data-eval="not-empty" class="form-control" placeholder="Municipio / Delegación">
+                                <input type="text" id="municipio_delegacion" data-eval="not-empty" data-required="false" class="form-control" placeholder="Municipio / Delegación">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Ciudad / Población:</label>
-                                <input type="text" id="ciudad_poblacion" data-eval="not-empty" class="form-control" placeholder="Ciudad / Población">
+                                <input type="text" id="ciudad_poblacion" data-eval="not-empty" data-required="false" class="form-control" placeholder="Ciudad / Población">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Estado:</label>
-                                <input type="text" id="estado" data-eval="not-empty" class="form-control" placeholder="Estado">
+                                <input type="text" id="estado" data-eval="not-empty" data-required="false" class="form-control" placeholder="Estado">
                             </div>
                         </div>
                     </form>
@@ -316,7 +331,7 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">RFC:</label>
-                                <input type="text" id="rfc" data-eval="rfc" class="form-control" placeholder="RFC">
+                                <input type="text" id="rfc" data-eval="rfc" data-required="true" class="form-control" placeholder="RFC">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Razón Social:</label>
@@ -324,11 +339,11 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">País:</label>
-                                <input type="text" id="pais" data-eval="not-empty" class="form-control" placeholder="País">
+                                <input type="text" id="pais" data-eval="not-empty" data-required="false" class="form-control" placeholder="País">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Calle:</label>
-                                <input type="text" id="calle" data-eval="alphanumeric" class="form-control" placeholder="Calle">
+                                <input type="text" id="calle" data-eval="alphanumeric" data-required="false" class="form-control" placeholder="Calle">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -338,15 +353,15 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Exterior:</label>
-                                <input type="text" id="exterior" data-eval="alphanumeric" class="form-control" placeholder="Exterior">
+                                <input type="text" id="exterior" data-eval="alphanumeric" data-required="false" class="form-control" placeholder="Exterior">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">CP:</label>
-                                <input type="text" id="cp" data-eval="alphanumeric" class="form-control" placeholder="CP">
+                                <input type="text" id="cp" data-eval="alphanumeric" data-required="false" class="form-control" placeholder="CP">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Colonia:</label>
-                                <select name="" id="colonia" data-eval="not-empty" class="form-control">
+                                <select name="" id="colonia" data-eval="not-empty" data-required="false" class="form-control">
                                     <option value="">selecciona</option>
                                     <option value="alguna">colonia</option>
                                 </select>
@@ -355,15 +370,15 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Municipio / Delegación:</label>
-                                <input type="text" id="municipio_delegacion" data-eval="not-empty" class="form-control" placeholder="Municipio / Delegación">
+                                <input type="text" id="municipio_delegacion" data-eval="not-empty" data-required="false" class="form-control" placeholder="Municipio / Delegación">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Ciudad / Población:</label>
-                                <input type="text" id="ciudad_poblacion" data-eval="not-empty" class="form-control" placeholder="Ciudad / Población">
+                                <input type="text" id="ciudad_poblacion" data-eval="not-empty" data-required="false" class="form-control" placeholder="Ciudad / Población">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Estado:</label>
-                                <input type="text" id="estado" data-eval="not-empty" class="form-control" placeholder="Estado">
+                                <input type="text" id="estado" data-eval="not-empty" data-required="false" class="form-control" placeholder="Estado">
                             </div>
                         </div>
                     </form>
@@ -373,19 +388,21 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Origen:</label>
-                                <select name="" id="origen" data-eval="not-empty" class="form-control">
+                                <select name="" id="origen" data-eval="not-empty" data-required="true" class="form-control">
                                     <option value="">selecciona</option>
+                                    <option value="something">something</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Medios de Publicida:</label>
-                                <select name="" id="medios_publicidad" data-eval="not-empty" class="form-control">
+                                <select name="" id="medios_publicidad" data-eval="not-empty" data-required="true" class="form-control">
                                     <option value="">selecciona</option>
+                                    <option value="other">other</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Campaña:</label>
-                                <select name="" id="campana" data-eval="not-empty" class="form-control">
+                                <select name="" id="campana" data-eval="not-empty" data-required="false" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
@@ -406,6 +423,9 @@
                             </div>
                         </div>
                     </form>
+                </div>
+                <div id="step-7">
+                    <h1>Alguna acción sobre este paso.... {{modificar}}</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +462,7 @@
             // Toolbar extra buttons
             var btnFinish = $('<button></button>').text('Terminar')
                                              .addClass('btn btn-info')
-                                             .on('click', function(){ alert('Finish Clicked'); });
+                                             .on('click', function(){ alert('Finish Clicked. Do Something'); });
             var btnCancel = $('<button></button>').text('Cancelar')
                                              .addClass('btn btn-danger')
                                              .on('click', function(){ $('#smartwizard').smartWizard("reset"); });                         
@@ -490,8 +510,9 @@
                         isValid = validator.validateForm(stepNumber);
                         break;
                 }
+                //hasta este punto deberiamos poder controlar la reponse y realizar lo que necesitemos por medio 
+                //de un promise...
                 return isValid;
-                //return confirm("Do you want to leave the step "+stepNumber+"?");
             });
 
         });   
