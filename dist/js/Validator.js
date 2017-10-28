@@ -418,6 +418,10 @@ Validator.prototype.initializeValidation = function initializeValidation(data_ty
 	if (input && !isValidInput) {
 		this.setInvalidInput(input);
 	}
+	if (isValidInput) { //probando el reset err, esto no ira aquí...
+		$(input).removeClass('invalid');
+		$(input).parent().removeClass('err-msg');
+	}
 	return isValidInput;
 };
 
@@ -579,6 +583,9 @@ Validator.prototype.hideInvalid = function hideInvalid(e) {
 Validator.prototype.showFormErrors = function showFormErrors(inputs_form) {
 	for (var i = 0; i < inputs_form.length; i++) {
 		if ( inputs_form[i].data('required') === true ) {
+			var parent = inputs_form[i].parent(); //simulando el setting de errores...
+			parent.attr('data-after','aquí referenciamos a un object de errores');
+			parent.addClass('err-msg');
 			this.showInputError(inputs_form[i]);
 		}
 	}

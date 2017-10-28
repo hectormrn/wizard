@@ -7,7 +7,20 @@
 			}
 		}
 	}
+	.form-group{
+		&.err-msg{
+			&:after{
+				content: attr(data-after);
+				position: absolute;
+				width: 95%;
+				height: 18px;
+				color: red;
+				overflow: hidden;
+				//background-color: #000;
 
+			}
+		}
+	}
 	.form-control{
 		&.invalid{
 			border: 1px solid red;
