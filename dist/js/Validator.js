@@ -11,6 +11,7 @@ function Validator() {
 	this.data_step_5 = {};
 	this.data_step_6 = {};
 	this.data_step_7 = {};
+	this.inputs_failed = [];
 	this.class_invalid = 'invalid';
 	this.class_default = 'form-control';
 	this.debug = false; // change to true for show console info.
@@ -35,6 +36,16 @@ Validator.prototype.attachEvents = function attachEvents() {
 
 Validator.prototype.getDomNodes = function getDomNodes() {
 	this.steps_container = $('#steps-container');
+	this.errors = {
+		not_empty: 		'Campo obligarotio',
+		numeric: 		'Dato númerico',
+		alphanumeric: 	'Dato alfanumérico',
+		alphabetic: 	'Dato alfabético',
+		date: 			'Fecha no válida',
+		email: 			'Email no válido',
+		nss: 			'NSS no valido',
+		curp: 			'CURP no valido'
+	};
 };
 
 /**
@@ -57,6 +68,7 @@ Validator.prototype.validateInput = function validateInput(evt) {
  */
 Validator.prototype.validateForm = function validateForm(stepNum) {
 	//Esto no es lo mejor pero bueno. flojera automatizar por ahora.
+	this.clearInputFailed();
 	var formNumber 	= parseInt(stepNum) + 1;
 	var result 		= false;
 	switch(stepNum){
@@ -96,43 +108,38 @@ Validator.prototype.validateForm1 = function validateForm1() {
 		form_step.find('#nombre'),
 		form_step.find('#apellido_paterno'),
 		form_step.find('#apellido_materno'), //no obligatorio
-		//form_step.find('[name = genero]'), //array 2
 		form_step.find('#estado_civil'),
 		form_step.find('#fecha_nacimiento'),
 		form_step.find('#correo_personal'),
 		form_step.find('#correo_laboral'), // no obligatorio
 		form_step.find('#tipo_persona'), //tipo fiscal
 		form_step.find('#regimen_conyugal'), //no obligatorio
-		//form_step.find('#rfc'),
 		form_step.find('#nss'), // no obligatorio
 		form_step.find('#curp')
 	];
 
 	for (var i = 0; i < this.arrayStep1.length; i++) {
-		//console.log("INPUT: ", this.arrayStep1[i].data('eval'));
+
 		var data_type 	= this.arrayStep1[i].data('eval');
 		var value 		= this.arrayStep1[i].val();
 		var required 	= this.arrayStep1[i].data('required');
 
 		this.data_step_1[this.arrayStep1[i].attr('id')] = this.arrayStep1[i].val();
 
-		var result = this.initializeValidation(data_type, value, required);
-
+		result = this.initializeValidation(data_type, value, required, this.arrayStep1[i]);
+		
 		if (!result) {
-			this.arrayStep1[i].addClass(this.class_invalid);
-			if (this.debug){
-				console.log("%c Fallo el campo: ", "background-color:red; color:#fefefe;", '[', this.arrayStep1[i].attr('id'), '] ya no continuamos la validación.');
-			}
-			this.showFormErrors(this.arrayStep1.slice(i, this.arrayStep1.length));
-			break;
+			this.addInputFailed(this.arrayStep1[i]);
 		}
 	}
+	this.showFormErrors(this.inputs_failed);
 	//validar rfc
 	if (result) {
 		this.data_step_1['rfc'] = form_step.find('#rfc').val();
 		result = this.isValidRfc(this.data_step_1['rfc']);	
 		if (!result) {
 			this.setInvalidInput( form_step.find('#rfc') );
+			this.addInputFailed(this.data_step_1['rfc']);
 		}
 	}
 	
@@ -146,7 +153,8 @@ Validator.prototype.validateForm1 = function validateForm1() {
 	if (this.debug){
 		console.log("%c Datos del 1º form: ", 'background-color:green; color:#FFF;', this.getFormDataByStepNumber(1));
 	}
-	return result;
+
+	return this.inputs_failed.length <= 0;
 };
 
 Validator.prototype.validateForm2 = function validateForm2() {
@@ -174,19 +182,15 @@ Validator.prototype.validateForm2 = function validateForm2() {
 
 		this.data_step_2[this.arrayStep2[i].attr('id')] = this.arrayStep2[i].val();
 
-		var result = this.initializeValidation(data_type, value, required);
+		var result = this.initializeValidation(data_type, value, required, this.arrayStep2[i]);
 
 		if (!result) {
-			this.arrayStep2[i].addClass(this.class_invalid);
-			if (this.debug){
-				console.log("%c Fallo el campo: ", "background-color:red; color:#fefefe;", '[', this.arrayStep2[i].attr('id'), '] ya no continuamos la validación.');
-			}
-			this.showFormErrors(this.arrayStep2.slice(i, this.arrayStep2.length));
-			break;
+			this.addInputFailed(this.arrayStep2[i]);
 		}
 	}
 
-	//store data, that is shit but i change later.
+	this.showFormErrors(this.inputs_failed);
+
 	if (result) {
 		var interior = form_step.find('#interior').val();
 		interior =  this.notEmpty(interior) ? interior: '';
@@ -195,7 +199,7 @@ Validator.prototype.validateForm2 = function validateForm2() {
 	if (this.debug){
 		console.log("%c Datos del 2º form: ", 'background-color:green; color:#FFF;', this.getFormDataByStepNumber(2));
 	}
-	return result;
+	return this.inputs_failed.length <= 0;
 };
 
 Validator.prototype.validateForm3 = function validateForm3() {
@@ -209,29 +213,25 @@ Validator.prototype.validateForm3 = function validateForm3() {
 	];
 
 	for (var i = 0; i < this.arrayStep3.length; i++) {
-		//console.log("INPUT: ", this.arrayStep1[i].data('eval'));
 		var data_type 	= this.arrayStep3[i].data('eval');
 		var value 		= this.arrayStep3[i].val();
 		var required 	= this.arrayStep3[i].data('required');
 
 		this.data_step_3[this.arrayStep3[i].attr('id')] = this.arrayStep3[i].val();
 
-		result = this.initializeValidation(data_type, value, required);
+		result = this.initializeValidation(data_type, value, required, this.arrayStep3[i]);
 
 		if (!result) {
-			this.arrayStep3[i].addClass(this.class_invalid);
-			if (this.debug){
-				console.log("%c Fallo el campo: ", "background-color:red; color:#fefefe;", '[', this.arrayStep3[i].attr('id'), '] ya no continuamos la validación.');
-			}
-			this.showFormErrors(this.arrayStep3.slice(i, this.arrayStep3.length));
-			break;
+			this.addInputFailed(this.arrayStep3[i]);
 		}
 	}
+
+	this.showFormErrors(this.inputs_failed);
 
 	if (this.debug){
 		console.log("%c Datos del 3º form: ", 'background-color:green; color:#FFF;', this.getFormDataByStepNumber(3));
 	}
-	return result;
+	return this.inputs_failed.length <= 0;
 };
 
 Validator.prototype.validateForm4 = function validateForm4() {
@@ -264,22 +264,19 @@ Validator.prototype.validateForm4 = function validateForm4() {
 
 		this.data_step_4[this.arrayStep4[i].attr('id')] = this.arrayStep4[i].val();
 
-		var result = this.initializeValidation(data_type, value, required);
+		var result = this.initializeValidation(data_type, value, required, this.arrayStep4[i]);
 
 		if (!result) {
-			this.arrayStep4[i].addClass(this.class_invalid);
-			if (this.debug) {
-				console.log("Fallo el campo: [", this.arrayStep4[i].attr('id'), '] ya no continuamos la validación.');
-			}
-			this.showFormErrors(this.arrayStep4.slice(i, this.arrayStep4.length));
-			break;
+			this.addInputFailed(this.arrayStep4[i]);
 		}
 	}
+
+	this.showFormErrors(this.inputs_failed);
 
 	if (this.debug){
 		console.log("%c Datos del 4º form: ", 'background-color:green; color:#FFF;', this.getFormDataByStepNumber(4));
 	}
-	return result;
+	return this.inputs_failed.length <= 0;
 };
 
 Validator.prototype.validateForm5 = function validateForm5() {
@@ -309,22 +306,19 @@ Validator.prototype.validateForm5 = function validateForm5() {
 
 		this.data_step_5[this.arrayStep5[i].attr('id')] = this.arrayStep5[i].val();
 
-		var result = this.initializeValidation(data_type, value, required);
+		var result = this.initializeValidation(data_type, value, required, this.arrayStep5[i]);
 
 		if (!result) {
-			this.arrayStep5[i].addClass(this.class_invalid);
-			if (this.debug) {
-				console.log("Fallo el campo: [", this.arrayStep5[i].attr('id'), '] ya no continuamos la validación.');
-			}
-			this.showFormErrors(this.arrayStep5.slice(i, this.arrayStep5.length));
-			break;
+			this.addInputFailed(this.arrayStep4[i]);
 		}
 	}
+
+	this.showFormErrors(this.inputs_failed);
 
 	if (this.debug){
 		console.log("%c Datos del 5º form: ", 'background-color:green; color:#FFF;', this.getFormDataByStepNumber(5));
 	}
-	return result;
+	return this.inputs_failed.length <= 0;
 };
 
 Validator.prototype.validateForm6 = function validateForm6() {
@@ -346,17 +340,14 @@ Validator.prototype.validateForm6 = function validateForm6() {
 
 		this.data_step_6[this.arrayStep6[i].attr('id')] = this.arrayStep6[i].val();
 
-		var result = this.initializeValidation(data_type, value, required);
+		var result = this.initializeValidation(data_type, value, required, this.arrayStep6[i]);
 
 		if (!result) {
-			this.arrayStep6[i].addClass(this.class_invalid);
-			if (this.debug) {
-				console.log("Fallo el campo: [", this.arrayStep6[i].attr('id'), '] ya no continuamos la validación.');
-			}
-			this.showFormErrors(this.arrayStep6.slice(i, this.arrayStep6.length));
-			break;
+			this.addInputFailed(this.arrayStep6[i]);
 		}
 	}
+
+	this.showFormErrors(this.inputs_failed);
 
 	//Almacenar genero en array data
 	if (result) {
@@ -364,9 +355,11 @@ Validator.prototype.validateForm6 = function validateForm6() {
 		var recomendado 		= $(inputRecomendado[0]).is(':checked') ? 'si': 'no';
 		this.data_step_6['recomendado'] = recomendado;
 	}
+	if (this.debug) {
+		console.log("%c Datos del 6º form: ", 'background-color:green; color:#FFF;', this.getFormDataByStepNumber(6));
+	}
 
-	console.log("Datos del 6º form: ", this.data_step_6);
-	return result;
+	return this.inputs_failed.length <= 0;
 };
 /**
  * Sabe como validar un campo del formulario, depende de lo que se le especifique como data-attribute	
@@ -376,18 +369,14 @@ Validator.prototype.validateForm6 = function validateForm6() {
  * @return {Boolean}           true si el input paso la validación, false si no.
  */
 Validator.prototype.initializeValidation = function initializeValidation(data_type, value, required, input) {
-	var isValidInput = true;
+	var isValidInput 	= true;
+	var msg_error 		= '';
 	if (required === false && this.isEmpty(value)) {
-		/*if (this.debug) {
-			console.info('dato no obligatorio y vacio.');
-		}*/
 		return true;
 	}
 	if (required === true && this.isEmpty(value)) {  //dato vacio y obligatorio
-		/*if (this.debug){
-			console.log('Dato obligatorio y vacio');
-		}*/
 		if (input) {
+			input.parent().attr('data-after', this.errors['not_empty']);
 			this.setInvalidInput(input);
 		}
 		return false;
@@ -410,17 +399,17 @@ Validator.prototype.initializeValidation = function initializeValidation(data_ty
 			case 'curp':
 				isValidInput = this.validRegex(data_type, value);
 				break;
-			case 'not-empty':
+			case 'not_empty':
 				isValidInput = this.notEmpty(value);
 				break;
 	}
 
 	if (input && !isValidInput) {
+		input.parent().attr('data-after', this.errors[data_type]);
 		this.setInvalidInput(input);
 	}
-	if (isValidInput) { //probando el reset err, esto no ira aquí...
-		$(input).removeClass('invalid');
-		$(input).parent().removeClass('err-msg');
+	if (isValidInput) { 
+		this.clearInput(input);
 	}
 	return isValidInput;
 };
@@ -433,7 +422,6 @@ Validator.prototype.initializeValidation = function initializeValidation(data_ty
  */
 Validator.prototype.isAlphabetic = function isAlphabetic(val, required) {
 	if (!this.notEmpty(val) && required === false) { //is null
-		console.log("bandera paso alphabetic vacio");
 		return true;
 	}
 	var pattern = /^[a-z áéíóúñüàè]+$/i;
@@ -584,7 +572,6 @@ Validator.prototype.showFormErrors = function showFormErrors(inputs_form) {
 	for (var i = 0; i < inputs_form.length; i++) {
 		if ( inputs_form[i].data('required') === true ) {
 			var parent = inputs_form[i].parent(); //simulando el setting de errores...
-			parent.attr('data-after','aquí referenciamos a un object de errores');
 			parent.addClass('err-msg');
 			this.showInputError(inputs_form[i]);
 		}
@@ -601,13 +588,42 @@ Validator.prototype.showInputError = function showInputError(input) {
 };
 
 /**
+ * Resetea a un array vacio, la variable que almacena los inputs que no pasaron validación.
+ * @return {boolean} true;
+ */
+Validator.prototype.clearInputFailed = function clearInputFailed() {
+	this.inputs_failed = [];
+	return true;
+};
+
+/**
+ * Limpia un input, basicamente elimina css de error y quita el valor al data-attribute
+ * @param  {Object} input Jquery object 
+ * @return {void}     
+ */
+Validator.prototype.clearInput = function clearInput(input) {
+	$(input).removeClass('invalid');
+	var parent = $(input).parent();
+	parent.removeClass('err-msg');
+	parent.attr('data-after', '');
+};
+
+/**
+ * Agrega un nodo input, al array de inputs fallidos
+ * @param {JqueryObject} input Input que no paso una validación
+ */
+Validator.prototype.addInputFailed = function addInputFailed(input) {
+	this.inputs_failed.push(input);
+};
+
+/**
  * Basicamente regresa los datso que se ingresaron en un formulario del paso N
  * @param  {Int} step Representa del número del formulario.	
  * @return {Object}    Todas los datos del formulario object{key:value}
  */
 Validator.prototype.getFormDataByStepNumber = function getFormDataByStepNumber(step) {
 	if (step === undefined || step <= 0 || (typeof step != 'number') ) {
-		if (this.debug) { console.log('Debes proporcionar un numero de formulario-step'); }
+		if (this.debug) { console.log('Debes proporcionar un número de formulario-step'); }
 	}
 	var key = 'data_step_';
 	return this[key + step];

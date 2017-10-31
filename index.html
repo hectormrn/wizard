@@ -34,7 +34,7 @@
                     <form action="" id="form-step-1">
                         <div class="row">
                             <div class="col-md-9">
-                                <div class="form-group col-md-4" data-after="Some validation message">
+                                <div class="form-group col-md-4" data-after="">
                                     <label for="">Nombre:</label>
                                     <input type="email" id="nombre" name="nombre" data-eval="alphabetic"  data-required="true"
                                         class="form-control" placeholder="Nombres(s)" required>
@@ -93,7 +93,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="">Tipo de Persona:</label>
                                     <select name="tipo_persona" id="tipo_persona" class="form-control" 
-                                     data-eval="not-empty" data-required="true">
+                                     data-eval="not_empty" data-required="true">
                                         <option value="">Selecciona</option>
                                         <option value="fisica">Fisica</option>
                                         <option value="moral">Moral</option>
@@ -134,7 +134,7 @@
                                 <div class="col-md-4">
                                     <label for="">Tipo de Identificación:</label>
                                     <select name="tipo_identificacion" id="tipo_identificacion" 
-                                    class="form-control" data-eval="not-empty" data-required="true" required>
+                                    class="form-control" data-eval="not_empty" data-required="true" required>
                                         <option value="">IFE</option>
                                     </select>
                                 </div>
@@ -152,7 +152,7 @@
                     <div class="col-md-12">
                         <div class="form-group col-md-3">
                             <label for="">País:</label>
-                            <input type="text" id="pais" data-eval="not-empty" data-required="true" class="form-control" placeholder="País">
+                            <input type="text" id="pais" data-eval="not_empty" data-required="true" class="form-control" placeholder="País">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Calle:</label>
@@ -176,7 +176,7 @@
                         <div class="form-group col-md-3">
                             <label for="">Colonia:</label>
                             <!-- llenar desde DB -->
-                            <select name="colonia" id="colonia" data-eval="not-empty" data-required="true" 
+                            <select name="colonia" id="colonia" data-eval="not_empty" data-required="true" 
                             class="form-control">
                                 <option value="">Selecciona</option>
                                 <option value="algo">Algo</option>
@@ -184,24 +184,24 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Municipio / Delegación:</label>
-                            <input type="text" id="municipio_delegacion" data-eval="not-empty" data-required="true" 
+                            <input type="text" id="municipio_delegacion" data-eval="not_empty" data-required="true" 
                             class="form-control" placeholder="Municipio / Delegación">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Ciudad / Población:</label>
-                            <input type="text" id="ciudad_poblacion" data-eval="not-empty" data-required="true" 
+                            <input type="text" id="ciudad_poblacion" data-eval="not_empty" data-required="true" 
                             class="form-control" placeholder="Ciudad / Población">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group col-md-3">
                             <label for="">Estado:</label>
-                            <input type="text" id="estado" data-eval="not-empty" data-required="true" 
+                            <input type="text" id="estado" data-eval="not_empty" data-required="true" 
                             class="form-control" placeholder="Estado">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Lugar de Nacimiento:</label>
-                            <select name="lugar-nacimiento" id="lugar_nacimiento" data-eval="not-empty" data-required="true" 
+                            <select name="lugar-nacimiento" id="lugar_nacimiento" data-eval="not_empty" data-required="true" 
                             class="form-control">
                                 <option value="">Selecciona</option>
                                 <option value="lugar">alguno</option>
@@ -209,13 +209,13 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Nacionalidad:</label>
-                            <select name="nacionalidad" id="nacionalidad" data-eval="not-empty" class="form-control">
+                            <select name="nacionalidad" id="nacionalidad" data-eval="not_empty" class="form-control">
                                 <option value="nacionalidad">Selecciona</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Escolaridad:</label>
-                            <select name="escolaridad" id="escolaridad" data-eval="not-empty" data-required="false" 
+                            <select name="escolaridad" id="escolaridad" data-eval="not_empty" data-required="false" 
                             class="form-control">
                                 <option value="escolaridad">Selecciona</option>
                             </select>
@@ -228,7 +228,7 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Tipo de Teléfono:</label>
-                                <select name="tipo-telefono" id="tipo_telefono" data-eval="not-empty" data-required="true" 
+                                <select name="tipo-telefono" id="tipo_telefono" data-eval="not_empty" data-required="true" 
                                 class="form-control">
                                     <option value="">Selecciona</option>
                                     <option value="tipotelefono">tipo</option>
@@ -273,13 +273,13 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Tipo Economía:</label>
-                                <select name="" id="tipo_economia" data-eval="not-empty" data-required="false" class="form-control">
+                                <select name="" id="tipo_economia" data-eval="not_empty" data-required="false" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">País:</label>
-                                <input type="text" id="pais" data-eval="not-empty" data-required="false" 
+                                <input type="text" id="pais" data-eval="not_empty" data-required="false" 
                                 class="form-control" placeholder="País">
                             </div>
                             <div class="form-group col-md-3">
@@ -304,24 +304,24 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Colonia:</label>
-                                <select name="" id="colonia" data-eval="not-empty" data-required="false" class="form-control">
+                                <select name="" id="colonia" data-eval="not_empty" data-required="false" class="form-control">
                                     <option value="">selecciona</option>
                                     <option value="algo">colonia</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Municipio / Delegación:</label>
-                                <input type="text" id="municipio_delegacion" data-eval="not-empty" data-required="false" class="form-control" placeholder="Municipio / Delegación">
+                                <input type="text" id="municipio_delegacion" data-eval="not_empty" data-required="false" class="form-control" placeholder="Municipio / Delegación">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Ciudad / Población:</label>
-                                <input type="text" id="ciudad_poblacion" data-eval="not-empty" data-required="false" class="form-control" placeholder="Ciudad / Población">
+                                <input type="text" id="ciudad_poblacion" data-eval="not_empty" data-required="false" class="form-control" placeholder="Ciudad / Población">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Estado:</label>
-                                <input type="text" id="estado" data-eval="not-empty" data-required="false" class="form-control" placeholder="Estado">
+                                <input type="text" id="estado" data-eval="not_empty" data-required="false" class="form-control" placeholder="Estado">
                             </div>
                         </div>
                     </form>
@@ -339,7 +339,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">País:</label>
-                                <input type="text" id="pais" data-eval="not-empty" data-required="false" class="form-control" placeholder="País">
+                                <input type="text" id="pais" data-eval="not_empty" data-required="false" class="form-control" placeholder="País">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Calle:</label>
@@ -349,7 +349,7 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Interior:</label>
-                                <input type="text" id="interior" data-eval="not-empty" data-required="false" class="form-control" placeholder="Interior">
+                                <input type="text" id="interior" data-eval="not_empty" data-required="false" class="form-control" placeholder="Interior">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Exterior:</label>
@@ -361,7 +361,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Colonia:</label>
-                                <select name="" id="colonia" data-eval="not-empty" data-required="false" class="form-control">
+                                <select name="" id="colonia" data-eval="not_empty" data-required="false" class="form-control">
                                     <option value="">selecciona</option>
                                     <option value="alguna">colonia</option>
                                 </select>
@@ -370,15 +370,15 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Municipio / Delegación:</label>
-                                <input type="text" id="municipio_delegacion" data-eval="not-empty" data-required="false" class="form-control" placeholder="Municipio / Delegación">
+                                <input type="text" id="municipio_delegacion" data-eval="not_empty" data-required="false" class="form-control" placeholder="Municipio / Delegación">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Ciudad / Población:</label>
-                                <input type="text" id="ciudad_poblacion" data-eval="not-empty" data-required="false" class="form-control" placeholder="Ciudad / Población">
+                                <input type="text" id="ciudad_poblacion" data-eval="not_empty" data-required="false" class="form-control" placeholder="Ciudad / Población">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Estado:</label>
-                                <input type="text" id="estado" data-eval="not-empty" data-required="false" class="form-control" placeholder="Estado">
+                                <input type="text" id="estado" data-eval="not_empty" data-required="false" class="form-control" placeholder="Estado">
                             </div>
                         </div>
                     </form>
@@ -388,21 +388,21 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-3">
                                 <label for="">Origen:</label>
-                                <select name="" id="origen" data-eval="not-empty" data-required="true" class="form-control">
+                                <select name="" id="origen" data-eval="not_empty" data-required="true" class="form-control">
                                     <option value="">selecciona</option>
                                     <option value="something">something</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Medios de Publicida:</label>
-                                <select name="" id="medios_publicidad" data-eval="not-empty" data-required="true" class="form-control">
+                                <select name="" id="medios_publicidad" data-eval="not_empty" data-required="true" class="form-control">
                                     <option value="">selecciona</option>
                                     <option value="other">other</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="">Campaña:</label>
-                                <select name="" id="campana" data-eval="not-empty" data-required="false" class="form-control">
+                                <select name="" id="campana" data-eval="not_empty" data-required="false" class="form-control">
                                     <option value="">selecciona</option>
                                 </select>
                             </div>
