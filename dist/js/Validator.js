@@ -14,6 +14,7 @@ function Validator() {
 	this.inputs_failed = [];
 	this.class_invalid = 'invalid';
 	this.class_default = 'form-control';
+	this.class_msg_err = 'err-msg';
 	this.debug = false; // change to true for show console info.
 	this.init();
 }
@@ -552,6 +553,7 @@ Validator.prototype.isValidEmail = function isValidEmail(email) {
  */
 Validator.prototype.setInvalidInput = function(input) {
 	input.addClass(this.class_invalid);
+	input.parent().addClass(this.class_msg_err);
 };
 
 /**
@@ -572,7 +574,7 @@ Validator.prototype.showFormErrors = function showFormErrors(inputs_form) {
 	for (var i = 0; i < inputs_form.length; i++) {
 		if ( inputs_form[i].data('required') === true ) {
 			var parent = inputs_form[i].parent(); //simulando el setting de errores...
-			parent.addClass('err-msg');
+			parent.addClass(this.class_msg_err);
 			this.showInputError(inputs_form[i]);
 		}
 	}
@@ -604,7 +606,7 @@ Validator.prototype.clearInputFailed = function clearInputFailed() {
 Validator.prototype.clearInput = function clearInput(input) {
 	$(input).removeClass('invalid');
 	var parent = $(input).parent();
-	parent.removeClass('err-msg');
+	parent.removeClass(this.class_msg_err);
 	parent.attr('data-after', '');
 };
 
