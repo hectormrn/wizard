@@ -525,10 +525,17 @@ Validator.prototype.notEmpty = function notEmpty(val) {
  * @return {Boolean}
  */
 Validator.prototype.isEmpty = function isEmpty(str) {
-	if (typeof str === 'number' && str != undefined) {
-		str = str.toString();
+	var isEmpty = false;
+	try{
+		if (typeof str === 'number' && str != undefined) {
+			str = str.toString();
+		}	
+		isEmpty = str.length <= 0;
+	}catch(e){
+		isEmpty = true;
 	}
-	return str.length <= 0;
+
+	return isEmpty;
 };
 
 /**
